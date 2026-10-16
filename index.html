@@ -6,29 +6,42 @@
     <title>Sunny Real Estate - स्मार्ट वेबसाइट</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f8f9fa; color: #333; }
-        header { background: #ffffff; padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 24px; font-weight: bold; color: #ff5a5f; }
+        body { background-color: #f4f6f9; color: #333; }
+        header { background: #ffffff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 22px; font-weight: bold; color: #ff5a5f; }
         
-        /* लाइव न्यूज़ टिकर स्टाइल */
-        .news-ticker { background: #ff5a5f; color: white; padding: 10px; overflow: hidden; position: relative; font-weight: bold; }
-        .news-marquee { display: inline-block; white-space: nowrap; animation: marquee 20s linear infinite; }
-        @keyframes marquee { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        /* लाइव न्यूज़ पट्टी */
+        .news-ticker { background: #ff5a5f; color: white; padding: 10px; overflow: hidden; white-space: nowrap; font-weight: bold; }
+        .news-marquee { display: inline-block; padding-left: 100%; animation: marquee 25s linear infinite; }
+        @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://unsplash.com') no-repeat center center/cover; height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
-        .main-container { padding: 40px 10%; }
-        .property-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
-        .property-card { background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .property-card img { width: 100%; height: 220px; object-fit: cover; }
-        .card-body { padding: 20px; }
-        .price { color: #28a745; font-size: 22px; font-weight: bold; margin-bottom: 10px; }
+        /* हीरो सेक्शन */
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://unsplash.com') no-repeat center center/cover; height: 35vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
+        .hero h1 { font-size: 32px; margin-bottom: 10px; }
+        
+        /* कंटेनर और ग्रिड */
+        .main-container { padding: 40px 5%; }
+        .section-title { text-align: center; margin-bottom: 30px; font-size: 24px; color: #222; }
+        .property-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        
+        /* सुंदर प्रॉपर्टी कार्ड */
+        .property-card { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eef2f5; display: flex; flex-direction: column; justify-content: space-between; }
+        .property-card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 20px; flex-grow: 1; }
+        .price { color: #28a745; font-size: 20px; font-weight: bold; margin-bottom: 8px; }
+        .prop-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; color: #333; text-transform: capitalize; }
+        .loc { color: #6c757d; font-size: 14px; margin-bottom: 15px; }
+        
+        /* व्हाट्सएप बटन स्टाइल */
+        .whatsapp-btn { display: block; text-align: center; background: #25d366; color: white; padding: 10px; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s; margin-top: 10px; }
+        .whatsapp-btn:hover { background: #1ebd58; }
     </style>
 </head>
 <body>
 
-    <!-- लाइव न्यूज़ पट्टी -->
+    <!-- लाइव न्यूज़ पट्टी जो सीधे गूगल शीट के Column E से चलेगी -->
     <div class="news-ticker">
-        <div class="news-marquee" id="live-news">लोड हो रहा है...</div>
+        <div class="news-marquee" id="live-news">Sunny Real Estate में आपका स्वागत है... नवीनतम प्लॉट्स की जानकारी के लिए नीचे देखें।</div>
     </div>
 
     <header>
@@ -37,59 +50,73 @@
 
     <section class="hero">
         <h1>Sunny Real Estate</h1>
-        <p>बिना कोडिंग बदले सीधे Google Sheet से अपडेट होने वाली वेबसाइट</p>
+        <p>अपनी पसंद की प्रॉपर्टी सीधे अपने बजट में पाएं</p>
     </section>
 
     <main class="main-container">
-        <h2 style="text-align:center;">हमारे नवीनतम प्लॉट्स और मकान</h2>
-        
-        <!-- यहाँ गूगल शीट से प्रॉपर्टीज अपने आप जुड़ेंगी -->
-        <div class="property-grid" id="properties-container"></div>
+        <h2 class="section-title">हमारे नवीनतम प्लॉट्स और मकान</h2>
+        <div class="property-grid" id="properties-container">
+            <!-- डेटा यहाँ Google Sheet से अपने आप लोड होगा -->
+        </div>
     </main>
 
     <script>
-        // ⚠️ यहाँ अपनी Google Sheet की ID डालें जो आपने स्टेप 2 में कॉपी की थी
-        const SHEET_ID = 'अपनी_GOOGLE_SHEET_ID_यहाँ_डालें';
-        const BASE_URL = `https://docs.google.com/spreadsheets/d/1EzZeb3Q2jAwMnos8h9O01Kt9dLLeBIHWZFXRkPMPAFk/edit?usp=drivesdk;
+        // आपकी Google Sheet की 100% सही ID यहाँ सेट कर दी गई है
+        const SHEET_ID = '1EzZeb3Q2jAwMnos8h9O01Kt9dLLeBIHWZFXRkPMPAFk';
+        const url = `https://google.com{SHEET_ID}/gviz/tq?tqx=out:json`;
 
-        fetch(BASE_URL)
+        fetch(url)
             .then(res => res.text())
-            .then(data => {
-                // गूगल शीट के डेटा को साफ करना
-                const json = JSON.parse(data.substr(47).slice(0, -2));
-                const rows = json.table.rows;
+            .then(txt => {
+                const jsonString = txt.substring(txt.indexOf("{"), txt.lastIndexOf("}") + 1);
+                const data = JSON.parse(jsonString);
+                const rows = data.table.rows;
                 
                 const container = document.getElementById('properties-container');
                 const newsContainer = document.getElementById('live-news');
 
-                // 1. लाइव न्यूज़ अपडेट करना (कॉलम E, पहली रो से)
-                if(rows[0] && rows[0].c[4]) {
-                    newsContainer.innerText = rows[0].c[4].v;
-                }
+                if(rows && rows.length > 1) {
+                    
+                    // 1. पहली उपलब्ध रो (Row 2) के कॉलम E से लाइव न्यूज़ पढ़ना
+                    if(rows[1].c && rows[1].c[4] && rows[1].c[4].v) {
+                        newsContainer.innerText = rows[1].c[4].v;
+                    }
 
-                // 2. प्रॉपर्टीज लिस्टिंग लोड करना
-                rows.forEach((row, index) => {
-                    // पहली रो के हेडर को छोड़ कर बाकी डेटा पढ़ना
-                    if (index >= 0) { 
-                        const title = row.c[0] ? row.c[0].v : 'No Title';
+                    // 2. सभी प्रॉपर्टीज को लोड करना (Row 2 से शुरू)
+                    for(let i = 1; i < rows.length; i++) {
+                        const row = rows[i];
+                        if(!row.c) continue;
+
+                        const title = row.c[0] ? row.c[0].v : 'Sunny Property';
                         const price = row.c[1] ? row.c[1].v : 'Contact for Price';
-                        const location = row.c[2] ? row.c[2].v : 'No Location';
-                        const image = row.c[3] ? row.c[3].v : 'https://placeholder.com';
+                        const location = row.c[2] ? row.c[2].v : 'Location N/A';
+                        
+                        // फोटो के लिए जाँच: यदि लिंक नहीं है या सिर्फ इमोजी है तो डिफ़ॉल्ट सुंदर मकान की फोटो दिखाना
+                        let image = (row.c[3] && row.c[3].v) ? row.c[3].v : '';
+                        if(!image.startsWith('http')) {
+                            image = 'https://unsplash.com';
+                        }
+
+                        // व्हाट्सएप मैसेज तैयार करना ताकि ग्राहक को पता रहे वह किस प्रॉपर्टी के लिए पूछ रहा है
+                        const whatsappMessage = encodeURIComponent(`नमस्ते Sunny Real Estate, मुझे आपकी वेबसाइट पर यह प्रॉपर्टी पसंद आई है:\nनाम: ${title}\nकीमत/साइज: ${price}\nलोकेशन: ${location}\nकृपया मुझे इसके बारे में और जानकारी दें।`);
+                        const whatsappLink = `https://whatsapp.com{whatsappMessage}`;
 
                         const cardHtml = `
                             <div class="property-card">
-                                <img src="${image}" alt="Property">
+                                <img src="${image}" alt="Property Image">
                                 <div class="card-body">
-                                    <div class="price">${price}</div>
-                                    <h3 style="margin-bottom:8px;">${title}</h3>
-                                    <div style="color:#6c757d;">📍 ${location}</div>
+                                    <div class="price">${price.toString().includes('sq') ? price : '₹' + price}</div>
+                                    <div class="prop-title">${title}</div>
+                                    <div class="loc">📍 ${location}</div>
+                                    <a href="${whatsappLink}" target="_blank" class="whatsapp-btn">💬 WhatsApp पर बात करें</a>
                                 </div>
                             </div>
                         `;
                         container.innerHTML += cardHtml;
                     }
-                });
-            });
+                }
+            })
+            .catch(err => console.error("डेटा लोड करने में समस्या आई:", err));
     </script>
 </body>
 </html>
