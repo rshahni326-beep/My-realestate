@@ -3,245 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunny Real Estate - आपके सपनों का घर</title>
+    <title>Sunny Real Estate - स्मार्ट वेबसाइट</title>
     <style>
-        /* बेस स्टाइलिंग */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        /* हेडर और नेविगेशन */
-        header {
-            background: #ffffff;
-            padding: 20px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #007bff;
-        }
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #495057;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            color: #007bff;
-        }
-
-        /* मुख्य बैनर (Hero Section) */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://unsplash.com') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-
-        /* प्रॉपर्टी लिस्टिंग सेक्शन */
-        .main-container {
-            padding: 60px 10%;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 28px;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #007bff;
-            margin: 10px auto 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f8f9fa; color: #333; }
+        header { background: #ffffff; padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: bold; color: #ff5a5f; }
         
-        /* प्रॉपर्टी कार्ड्स का ग्रिड */
-        .property-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .property-card {
-            background: #ffffff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        .property-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        .property-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        .card-body {
-            padding: 20px;
-        }
-        .price {
-            color: #28a745;
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .property-title {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-        .location {
-            color: #6c757d;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
+        /* लाइव न्यूज़ टिकर स्टाइल */
+        .news-ticker { background: #ff5a5f; color: white; padding: 10px; overflow: hidden; position: relative; font-weight: bold; }
+        .news-marquee { display: inline-block; white-space: nowrap; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* कांटेक्ट फॉर्म */
-        .contact-section {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: 50px auto 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            font-size: 15px;
-        }
-        .btn-submit {
-            background: #007bff;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn-submit:hover {
-            background: #0056b3;
-        }
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://unsplash.com') no-repeat center center/cover; height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+        .main-container { padding: 40px 10%; }
+        .property-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .property-card { background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .property-card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-body { padding: 20px; }
+        .price { color: #28a745; font-size: 22px; font-weight: bold; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-    <!-- हेडर -->
+    <!-- लाइव न्यूज़ पट्टी -->
+    <div class="news-ticker">
+        <div class="news-marquee" id="live-news">लोड हो रहा है...</div>
+    </div>
+
     <header>
         <div class="logo">Sunny Real Estate</div>
-        <nav>
-            <a href="#">होम</a>
-            <a href="#">प्रॉपर्टीज</a>
-            <a href="#">हमारे बारे में</a>
-            <a href="#">संपर्क करें</a>
-        </nav>
     </header>
 
-    <!-- हीरो सेक्शन -->
     <section class="hero">
-        <h1>अपने सपनों का आशियाना ढूंढें</h1>
-        <p>बिना किसी परेशानी के सबसे बेहतरीन लोकेशंस पर प्लॉट्स और मकान खरीदें</p>
+        <h1>Sunny Real Estate</h1>
+        <p>बिना कोडिंग बदले सीधे Google Sheet से अपडेट होने वाली वेबसाइट</p>
     </section>
 
-    <!-- प्रॉपर्टी लिस्टिंग -->
     <main class="main-container">
-        <h2 class="section-title">नवीनतम प्रॉपर्टीज</h2>
+        <h2 style="text-align:center;">हमारे नवीनतम प्लॉट्स और मकान</h2>
         
-        <div class="property-grid">
-            <!-- प्रॉपर्टी 1 -->
-            <div class="property-card">
-                <img src="https://unsplash.com" alt="House">
-                <div class="card-body">
-                    <div class="price">₹45,00,000</div>
-                    <div class="property-title">3 BHK मॉडर्न विला</div>
-                    <div class="location">📍 सेक्टर 62, नोएडा</div>
-                </div>
-            </div>
-
-            <!-- प्रॉपर्टी 2 -->
-            <div class="property-card">
-                <img src="https://unsplash.com" alt="House">
-                <div class="card-body">
-                    <div class="price">₹25,00,000</div>
-                    <div class="property-title">2 BHK रेडी टू मूव फ्लैट</div>
-                    <div class="location">📍 इंदिरानगर, लखनऊ</div>
-                </div>
-            </div>
-
-            <!-- प्रॉपर्टी 3 -->
-            <div class="property-card">
-                <img src="https://unsplash.com" alt="House">
-                <div class="card-body">
-                    <div class="price">₹15,00,000</div>
-                    <div class="property-title">कमर्शियल प्लॉट (1200 Sq.Ft)</div>
-                    <div class="location">📍 न्यू टाउन, कोलकाता</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- संपर्क फ़ॉर्म सेक्शन -->
-        <div class="contact-section">
-            <h2 style="text-align: center; margin-bottom: 20px;">हमसे संपर्क करें</h2>
-            <form>
-                <div class="form-group">
-                    <label>आपका नाम</label>
-                    <input type="text" placeholder="नाम लिखें" required>
-                </div>
-                <div class="form-group">
-                    <label>मोबाइल नंबर</label>
-                    <input type="tel" placeholder="फ़ोन नंबर लिखें" required>
-                </div>
-                <div class="form-group">
-                    <label>आपकी रिक्वायरमेंट</label>
-                    <textarea rows="4" placeholder="आप किस तरह की प्रॉपर्टी ढूंढ रहे हैं?"></textarea>
-                </div>
-                <button type="submit" class="btn-submit">डिटेल्स भेजें</button>
-            </form>
-        </div>
+        <!-- यहाँ गूगल शीट से प्रॉपर्टीज अपने आप जुड़ेंगी -->
+        <div class="property-grid" id="properties-container"></div>
     </main>
 
+    <script>
+        // ⚠️ यहाँ अपनी Google Sheet की ID डालें जो आपने स्टेप 2 में कॉपी की थी
+        const SHEET_ID = 'अपनी_GOOGLE_SHEET_ID_यहाँ_डालें';
+        const BASE_URL = `https://docs.google.com/spreadsheets/d/1EzZeb3Q2jAwMnos8h9O01Kt9dLLeBIHWZFXRkPMPAFk/edit?usp=drivesdk`;
+
+        fetch(BASE_URL)
+            .then(res => res.text())
+            .then(data => {
+                // गूगल शीट के डेटा को साफ करना
+                const json = JSON.parse(data.substr(47).slice(0, -2));
+                const rows = json.table.rows;
+                
+                const container = document.getElementById('properties-container');
+                const newsContainer = document.getElementById('live-news');
+
+                // 1. लाइव न्यूज़ अपडेट करना (कॉलम E, पहली रो से)
+                if(rows[0] && rows[0].c[4]) {
+                    newsContainer.innerText = rows[0].c[4].v;
+                }
+
+                // 2. प्रॉपर्टीज लिस्टिंग लोड करना
+                rows.forEach((row, index) => {
+                    // पहली रो के हेडर को छोड़ कर बाकी डेटा पढ़ना
+                    if (index >= 0) { 
+                        const title = row.c[0] ? row.c[0].v : 'No Title';
+                        const price = row.c[1] ? row.c[1].v : 'Contact for Price';
+                        const location = row.c[2] ? row.c[2].v : 'No Location';
+                        const image = row.c[3] ? row.c[3].v : 'https://placeholder.com';
+
+                        const cardHtml = `
+                            <div class="property-card">
+                                <img src="${image}" alt="Property">
+                                <div class="card-body">
+                                    <div class="price">${price}</div>
+                                    <h3 style="margin-bottom:8px;">${title}</h3>
+                                    <div style="color:#6c757d;">📍 ${location}</div>
+                                </div>
+                            </div>
+                        `;
+                        container.innerHTML += cardHtml;
+                    }
+                });
+            });
+    </script>
 </body>
 </html>
