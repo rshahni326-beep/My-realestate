@@ -1,176 +1,138 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunny Real Estate - Premium Marketplace</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background-color: #f7f9fc; color: #2d3748; }
-        
-        /* प्रीमियम हेडर */
-        header { background: #ffffff; padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 24px; font-weight: 800; color: #0052cc; letter-spacing: 0.5px; }
-        .nav-links a { margin-left: 25px; text-decoration: none; color: #4a5568; font-weight: 600; font-size: 15px; transition: 0.3s; }
-        .nav-links a:hover { color: #0052cc; }
-        .contact-btn { background: #0052cc; color: white !important; padding: 8px 18px; border-radius: 6px; }
-
-        /* लाइव न्यूज़ पट्टी */
-        .news-ticker { background: #0052cc; color: white; padding: 10px; overflow: hidden; white-space: nowrap; font-weight: bold; font-size: 14px; }
-        .news-marquee { display: inline-block; padding-left: 100%; animation: marquee 30s linear infinite; }
-        @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-
-        /* MyRealEstate जैसा प्रीमियम हीरो सेक्शन */
-        .hero { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://unsplash.com') no-repeat center center/cover; height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
-        .hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 12px; }
-        .hero p { font-size: 18px; color: #cbd5e0; margin-bottom: 30px; }
-        
-        /* सर्च बार विजेट */
-        .search-container { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); width: 100%; max-width: 700px; display: flex; gap: 10px; flex-wrap: wrap; }
-        .search-container select, .search-container input { flex: 1; min-width: 150px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; outline: none; }
-        .search-btn { background: #0052cc; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .search-btn:hover { background: #0041a3; }
-
-        /* मुख्य कंटेनर */
-        .main-container { padding: 60px 8%; }
-        .section-title { font-size: 28px; font-weight: 700; color: #1a202c; margin-bottom: 10px; text-align: left; }
-        .section-subtitle { font-size: 16px; color: #718096; margin-bottom: 30px; }
-        
-        /* प्रॉपर्टी ग्रिड */
-        .property-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        /* प्रीमियम प्रॉपर्टी कार्ड */
-        .property-card { background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #edf2f7; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-        .property-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .property-card img { width: 100%; height: 220px; object-fit: cover; }
-        .card-body { padding: 24px; flex-grow: 1; }
-        .price { color: #38a169; font-size: 24px; font-weight: 800; margin-bottom: 8px; }
-        .prop-title { font-size: 18px; font-weight: 700; color: #2d3748; margin-bottom: 8px; text-transform: capitalize; }
-        .loc { color: #718096; font-size: 14px; margin-bottom: 20px; display: flex; align-items: center; }
-        
-        .whatsapp-btn { display: block; text-align: center; background: #25d366; color: white; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; }
-        .whatsapp-btn:hover { background: #1ebd58; }
-
-        /* इकोसिस्टम सर्विसेज सेक्शन */
-        .services-section { background: #ffffff; padding: 60px 8%; margin-top: 40px; border-top: 1px solid #edf2f7; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; }
-        .service-box { background: #f7f9fc; padding: 25px; border-radius: 12px; border: 1px solid #edf2f7; text-align: center; transition: 0.3s; }
-        .service-box:hover { background: #edf2f7; }
-        .service-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #1a202c; }
-        .service-box p { font-size: 14px; color: #718096; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUDR PROPERTIES | Lucknow</title>
+<meta name="description" content="Find your dream home, plot or commercial property in Lucknow with RUDR PROPERTIES.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#d8b46a;--dark:#11130f;--cream:#f7f5ef}
+body{font-family:Arial,sans-serif;background:var(--cream);color:#222;line-height:1.6}
+header{background:#11130f;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:bold;color:var(--gold);letter-spacing:1px}
+.logo span{display:block;color:#fff;font-size:10px;letter-spacing:4px}
+nav a{color:white;text-decoration:none;margin-left:16px;font-size:14px}
+.hero{padding:75px 7%;background:linear-gradient(90deg,rgba(10,12,10,.94),rgba(10,12,10,.55)),url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85') center/cover;color:white;min-height:440px;display:flex;align-items:center}
+.hero-content{max-width:650px}
+.tag{color:var(--gold);letter-spacing:3px;font-size:12px;font-weight:bold}
+h1{font-size:clamp(36px,6vw,60px);line-height:1.13;margin:18px 0}
+.hero p{color:#e2e2e2;max-width:520px}
+.btn{display:inline-block;background:var(--gold);color:#171717;text-decoration:none;border:0;padding:13px 20px;font-weight:bold;border-radius:3px;cursor:pointer;margin-top:22px}
+.search{background:white;margin:-28px auto 0;position:relative;width:88%;padding:22px;box-shadow:0 8px 30px #0001;display:flex;gap:12px;flex-wrap:wrap}
+input,select{padding:13px;border:1px solid #ddd;min-width:150px;flex:1;background:white}
+section{padding:65px 7%}
+.heading{text-align:center;margin-bottom:30px}
+.heading small{color:#9b7938;letter-spacing:3px;font-weight:bold}
+.heading h2{font-size:30px;margin-top:8px}
+.categories,.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.category{background:#191b17;color:white;padding:27px;border-bottom:3px solid var(--gold);text-align:center}
+.category b{display:block;font-size:19px;margin:8px}
+.category p{font-size:13px;color:#ccc}
+.card{background:white;box-shadow:0 5px 20px #0000000b;overflow:hidden;border:1px solid #eee}
+.card img{width:100%;height:210px;object-fit:cover;background:#ddd}
+.card-body{padding:18px}
+.badge{font-size:11px;background:#f2e7cd;color:#72551e;padding:5px 9px;display:inline-block}
+.card h3{margin:10px 0;font-size:19px}
+.price{color:#9b7938;font-size:21px;font-weight:bold}
+.details{color:#666;font-size:13px;margin-top:8px}
+.card a{display:block;text-align:center;padding:12px;background:#171914;color:white;text-decoration:none;margin-top:17px}
+.about{background:#eae5d8}
+.about-inner{max-width:850px;margin:auto;text-align:center}
+.about p{margin-top:14px;color:#555}
+.contact-box{background:#171914;color:white;padding:30px;text-align:center;max-width:700px;margin:auto}
+.contact-box p{margin-top:10px;color:#ddd}
+footer{background:#0c0d0b;color:#bbb;text-align:center;padding:25px;font-size:13px}
+footer strong{color:var(--gold)}
+@media(max-width:700px){header{padding:16px 5%}nav{width:100%;display:flex;flex-wrap:wrap;gap:12px}nav a{margin:0}.hero{padding:55px 6%;min-height:400px}.search{width:92%}.categories,.cards{grid-template-columns:1fr}section{padding:48px 6%}.card img{height:220px}}
+</style>
 </head>
 <body>
+<header>
+  <div class="logo">RUDR PROPERTIES<span>YOUR PROPERTY PARTNER</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#properties">Properties</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <!-- लाइव न्यूज़ पट्टी -->
-    <div class="news-ticker">
-        <div class="news-marquee" id="live-news">Sunny Real Estate में आपका स्वागत है... प्रीमियम प्रोजेक्ट्स और प्लॉट्स लाइव हैं।</div>
-    </div>
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="tag">LUXURY LIVING · SMART INVESTING</div>
+    <h1>Find a Place<br>You'll Call Home.</h1>
+    <p>Discover homes, plots and commercial properties in Lucknow with RUDR PROPERTIES. Your next chapter starts here.</p>
+    <a class="btn" href="#properties">EXPLORE PROPERTIES →</a>
+  </div>
+</section>
 
-    <!-- हेडर -->
-    <header>
-        <div class="logo">Sunny Real Estate</div>
-        <nav class="nav-links">
-            <a href="#">Buy</a>
-            <a href="#">Rent</a>
-            <a href="#">Projects</a>
-            <a href="https://whatsapp.com" target="_blank" class="contact-btn">संपर्क करें</a>
-        </nav>
-    </header>
+<div class="search">
+  <input id="keyword" placeholder="Search by location..." aria-label="Search location">
+  <select id="type" aria-label="Property type">
+    <option value="">All property types</option>
+    <option>Residential</option><option>Plot</option><option>Commercial</option>
+  </select>
+  <button class="btn" style="margin:0" onclick="filterProperties()">SEARCH</button>
+</div>
 
-    <!-- प्रीमियम हीरो सर्च सेक्शन -->
-    <section class="hero">
-        <h1>Find Your Dream Property</h1>
-        <p>Real Data. Real Properties.</p>
-        <div class="search-container">
-            <select>
-                <option>Buy</option>
-                <option>Rent</option>
-            </select>
-            <input type="text" placeholder="शहर या इलाका दर्ज करें...">
-            <button class="search-btn">Search</button>
-        </div>
-    </section>
+<section id="properties">
+  <div class="heading"><small>HANDPICKED FOR YOU</small><h2>Featured Properties</h2><p>Explore property opportunities in Lucknow</p></div>
+  <div class="cards" id="propertyCards">
+    <article class="card" data-location="Gomti Nagar Lucknow" data-type="Residential">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80" alt="Modern residential house">
+      <div class="card-body"><span class="badge">RESIDENTIAL</span><h3>Premium Independent House</h3><div class="price">Price on Request</div><p class="details">📍 Gomti Nagar, Lucknow<br>🏡 Spacious family home</p><a href="#contact">Enquire Now</a></div>
+    </article>
+    <article class="card" data-location="Sultanpur Road Lucknow" data-type="Plot">
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Open land and green field">
+      <div class="card-body"><span class="badge">PLOT & LAND</span><h3>Residential Plot</h3><div class="price">Price on Request</div><p class="details">📍 Sultanpur Road, Lucknow<br>📐 Plot size on enquiry</p><a href="#contact">Enquire Now</a></div>
+    </article>
+    <article class="card" data-location="Hazratganj Lucknow" data-type="Commercial">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80" alt="Modern commercial building">
+      <div class="card-body"><span class="badge">COMMERCIAL</span><h3>Commercial Space</h3><div class="price">Price on Request</div><p class="details">📍 Hazratganj, Lucknow<br>🏢 Shops and office enquiries</p><a href="#contact">Enquire Now</a></div>
+    </article>
+  </div>
+  <p id="noResults" style="display:none;text-align:center;padding:25px">No matching properties found. Try another search.</p>
+  <p style="text-align:center;color:#777;font-size:13px;margin-top:24px">Sample listings for design preview. Confirm availability, prices and details before publishing.</p>
+</section>
 
-    <!-- नवीनतम संपत्तियां -->
-    <main class="main-container">
-        <h2 class="section-title">Featured Properties</h2>
-        <p class="section-subtitle">सीधे आपकी गूगल शीट से अपडेट की गई नवीनतम संपत्तियां</p>
-        
-        <div class="property-grid" id="properties-container">
-            <!-- डेटा यहाँ Google Sheet से अपने आप लोड होगा -->
-        </div>
-    </main>
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="heading"><small>ABOUT OUR COMPANY</small><h2>Welcome to RUDR PROPERTIES</h2></div>
+    <p>We help you explore property opportunities in Lucknow, from residential homes and plots to commercial spaces. Our goal is to make your property search simple, transparent and convenient.</p>
+    <p>Contact us to discuss your requirements and get details about available properties.</p>
+  </div>
+</section>
 
-    <!-- प्रीमियम इकोसिस्टम सर्विसेज -->
-    <section class="services-section">
-        <h2 class="section-title" style="text-align: center;">The Sunny Ecosystem</h2>
-        <p class="section-subtitle" style="text-align: center;">आपकी प्रॉपर्टी यात्रा के हर चरण के लिए विशेष सेवाएं</p>
-        <div class="services-grid">
-            <div class="service-box">
-                <h3>Home Loans</h3>
-                <p>सर्वोत्तम ब्याज दरों पर फाइनेंसिंग विकल्प खोजें।</p>
-            </div>
-            <div class="service-box">
-                <h3>Legal Assistance</h3>
-                <p>प्रॉपर्टी वेरिफिकेशन और कानूनी दस्तावेज़ीकरण की सुविधा।</p>
-            </div>
-            <div class="service-box">
-                <h3>Property Management</h3>
-                <p>पेशेवर प्रबंधन और मूल्यांकन सेवाएं।</p>
-            </div>
-            <div class="service-box">
-                <h3>Packers & Movers</h3>
-                <p>सुरक्षित और आसान शिफ्टिंग के लिए भरोसेमंद पार्टनर।</p>
-            </div>
-        </div>
-    </section>
+<section id="contact">
+  <div class="contact-box">
+    <div class="tag">LET'S FIND YOUR PROPERTY</div>
+    <h2 style="margin-top:10px">Talk to RUDR PROPERTIES</h2>
+    <p>Looking to buy or enquire about a property in Lucknow?</p>
+    <p>Call or WhatsApp us to get started.</p>
+    <a class="btn" id="whatsappLink" href="https://wa.me/" target="_blank" rel="noopener">WHATSAPP ENQUIRY</a>
+    <p style="font-size:12px;margin-top:18px">WhatsApp contact details will be added after setup.</p>
+  </div>
+</section>
+</main>
 
-    <script>
-        // आपकी Google Sheet की ID
-        const SHEET_ID = '1EzZeb3Q2jAwMnos8h9O01Kt9dLLeBIHWZFXRkPMPAFk';
-        const url = `https://google.com{SHEET_ID}/gviz/tq?tqx=out:json`;
+<footer>© <span id="year"></span> <strong>RUDR PROPERTIES</strong> · Lucknow, Uttar Pradesh · All rights reserved.</footer>
 
-        fetch(url)
-            .then(res => res.text())
-            .then(txt => {
-                const jsonString = txt.substring(txt.indexOf("{"), txt.lastIndexOf("}") + 1);
-                const data = JSON.parse(jsonString);
-                const rows = data.table.rows;
-                
-                const container = document.getElementById('properties-container');
-                const newsContainer = document.getElementById('live-news');
-
-                if(rows && rows.length > 1) {
-                    
-                    // शीट के Column E से न्यूज़ टिकर लोड करना
-                    if(rows[1].c && rows[1].c[4] && rows[1].c[4].v) {
-                        newsContainer.innerText = rows[1].c[4].v;
-                    }
-
-                    // सभी प्रॉपर्टीज को लूप में लोड करना
-                    for(let i = 1; i < rows.length; i++) {
-                        const row = rows[i];
-                        if(!row.c) continue;
-
-                        const title = row.c[0] ? row.c[0].v : 'Premium Property';
-                        const price = row.c[1] ? row.c[1].v : 'Contact for Price';
-                        const location = row.c[2] ? row.c[2].v : 'Location N/A';
-                        
-                        let image = (row.c[3] && row.c[3].v) ? row.c[3].v : '';
-                        if(!image.startsWith('http')) {
-                            image = 'https://unsplash.com';
-                        }
-
-                        const whatsappMessage = encodeURIComponent(`नमस्ते Sunny Real Estate, मुझे आपकी वेबसाइट पर यह प्रॉपर्टी पसंद आई है:\nनाम: ${title}\nकीमत/साइज: ${price}\nलोकेशन: ${location}\nकृपया आगे की बात करें।`);
-                        const whatsappLink = `https://whatsapp.com&text=${whatsappMessage}`;
-
-                        const cardHtml = `
-                            <div class="property-card">
-                                <img src="${image}" alt="Property Image">
-                                <div class="card-body">
-                                    <div class="price">${price.toString().includes('sq') ? price : '₹' + price}</div>
-                                    <div class="prop-title">${title}</div>
-                                    <div class="loc">📍 ${location}</div>
-                                    <a href="${whatsappLink}" target="_blank" class="whatsapp-btn">💬 WhatsApp Inquiry</a>
-        
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+function filterProperties(){
+  const keyword=document.getElementById('keyword').value.toLowerCase().trim();
+  const type=document.getElementById('type').value;
+  let visible=0;
+  document.querySelectorAll('#propertyCards .card').forEach(card=>{
+    const matchLocation=card.dataset.location.toLowerCase().includes(keyword);
+    const matchType=!type||card.dataset.type===type;
+    card.style.display=matchLocation&&matchType?'block':'none';
+    if(matchLocation&&matchType)visible++;
+  });
+  document.getElementById('noResults').style.display=visible?'none':'block';
+}
+</script>
+</body>
+</html>
