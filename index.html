@@ -141,7 +141,7 @@ async function loadProperties() {
   }
 
   container.innerHTML = '<p>Loading properties...</p>';
-
+console.log('Loading properties from Supabase...');
   const { data, error } = await supabaseClient
     .from('properties')
     .select('*')
