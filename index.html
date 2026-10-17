@@ -132,20 +132,106 @@ const supabaseClient = window.supabase.createClient(
 
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
-function filterProperties(){
-  const keyword=document.getElementById('keyword').value.toLowerCase().trim();
-  const type=document.getElementById('type').value;
-  let visible=0;
-  document.querySelectorAll('#propertyCards .card').forEach(card=>{
-    const matchLocation=card.dataset.location.toLowerCase().includes(keyword);
-    const matchType=!type||card.dataset.type===type;
-    card.style.display=matchLocation&&matchType?'block':'none';
-    if(matchLocation&&matchType)visible++;
-  });
-  document.getElementById('noResults').style.display=visible?'none':'block';
-}
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+async function loadProperties() {
+  const container = document.getElementById('propertyCards');
 
+  if (!container) {
+    console.error('Property cards container not found');
+    return;
+  }
+
+  container.innerHTML = '<p>Loading properties...</p>';
+
+  const { data, error } = await supabaseClient
+    .from('properties')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Supabase error:', error.message);
+    container.innerHTML =
+      '<p>Properties load nahi hui. Please try again later.</p>';
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    container.innerHTML = '<p>Abhi koi property available nahi hai.</p>';
+    return;
+  }
+
+  container.innerHTML = data.map(property => {
+    const title = escapeHTML(property.title || 'Property');
+    const location = escapeHTML(property.location || 'Location on request');
+    const price = escapeHTML(property.price || 'Price on request');
+    const type = escapeHTML(property.property_type || 'Property');
+    const area = escapeHTML(property.area || 'Details on request');
+    const description = escapeHTML(property.description || '');
+
+    const image = (property.image_urls || '')
+      .split(',')[0]
+      .trim();
+
+    const safeImage = /^https:\/\/[^\s"'<>]+$/i.test(image)
+      ? image
+      : '';
+
+    return `
+      <article class="card">
+        ${safeImage
+          ? `<img src="${safeImage}" alt="${title}" loading="lazy">`
+          : ''}
+        <div class="card-body">
+          <span class="badge">${type}</span>
+          <h3>${title}</h3>
+          <p class="price">${price}</p>
+          <p>📍 ${location}</p>
+          <p>${area}</p>
+          <p class="details">${description}</p>
+          <a class="btn" href="#contact">Enquire Now</a>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[character]);
+}
+
+function filterProperties() {
+  const keyword = document.getElementById('keyword').value
+    .toLowerCase().trim();
+  const type = document.getElementById('type').value;
+
+  let visible = 0;
+
+  document.querySelectorAll('#propertyCards .card').forEach(card => {
+    const text = card.innerText.toLowerCase();
+    const matchLocation = text.includes(keyword);
+    const badge = card.querySelector('.badge');
+    const matchType = !type || (badge && badge.textContent.trim() === type);
+
+    card.style.display = matchLocation && matchType ? '' : 'none';
+
+    if (matchLocation && matchType) visible++;
+  });
+
+  const noResults = document.getElementById('noResults');
+
+  if (noResults) {
+    noResults.style.display = visible ? 'none' : 'block';
+  }
+}
+
+loadProperties();
+<script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 </body>
 </html>
