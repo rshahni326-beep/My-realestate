@@ -47,6 +47,17 @@ footer strong{color:var(--gold)}
 @media(max-width:700px){header{padding:16px 5%}nav{width:100%;display:flex;flex-wrap:wrap;gap:12px}nav a{margin:0}.hero{padding:55px 6%;min-height:400px}.search{width:92%}.categories,.cards{grid-template-columns:1fr}section{padding:48px 6%}.card img{height:220px}}
 </style>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://kfirvycfmodwavkendea.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_lSxGDChdMrQjcGUU0i65tA_LELVkwxh";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
 <body>
 <header>
   <div class="logo">RUDR PROPERTIES<span>YOUR PROPERTY PARTNER</span></div>
@@ -136,13 +147,5 @@ function filterProperties(){
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL = "https://kfirvycfmodwavkendea.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_lSxGDChdMrQjcGUU0i65tA_LELVkwxh";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-</script>
 </body>
 </html>
