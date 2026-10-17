@@ -133,6 +133,16 @@ function filterProperties(){
   });
   document.getElementById('noResults').style.display=visible?'none':'block';
 }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://kfirvycfmodwavkendea.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_lSxGDChdMrQjcGUU0i65tA_LELVkwxh";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 </script>
 </body>
 </html>
